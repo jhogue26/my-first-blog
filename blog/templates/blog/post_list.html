@@ -1,14 +1,11 @@
-<html>
-    <head>
-        <title>Justin's Django Blog</title>
-    </head>
-    <body>
-        <h1><a href="/">Justin's Django Blog</a></h1>
+{% extends 'blog/base.html' %}
 
-        <h2>My first post</h2>
-        <p>This is my first Django blog post.</p>
-
-        <h2>My second post</h2>
-        <p>Django is starting to make sense.</p>
-    </body>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time>published: {{ post.published_date }}</time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
